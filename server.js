@@ -64,7 +64,17 @@ app.get('/bad',(req,res)=>
 res.error('error occured');
 });
 
+app.get('/scanii',(req,res)=>
+{
+console.log("scanni url hitting.............\n");
+console.log(JSON.stringify(req));
+console.log("scanni url request above.............\n");
 
+res.send({
+  name:'test',
+  likes:['bat']
+});
+});
 
 
 
