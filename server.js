@@ -1,6 +1,10 @@
 const express=require('express');
 const hbs=require('hbs');
 const fs=require('fs');
+
+const bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true }));
 var app=express();
 var port=process.env.PORT || 3000;
 app.set('view engine','hbs');
@@ -64,11 +68,14 @@ app.get('/bad',(req,res)=>
 res.error('error occured');
 });
 
-app.get('/scanii',(req,res)=>
+app.post('/scanii',(req,res)=>
 {
 console.log("scanni url hitting.............\n");
-console.log(JSON.stringify(req));
+console.log(req);
+console.log(req.body);
 console.log("scanni url request above.............\n");
+
+console.log(JSON.stringify(req.body));
 
 res.send({
   name:'test',
